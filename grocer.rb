@@ -24,9 +24,6 @@ def consolidate_cart(cart)
 
   #kill if already in result array
     if find_item_by_name_in_collection(compare_item[:item], result)
-      p "We found a duplicate"
-      p compare_item
-      p result
       i += 1
 
     else
