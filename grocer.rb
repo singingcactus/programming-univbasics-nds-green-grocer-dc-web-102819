@@ -60,26 +60,23 @@ def apply_coupons(cart, coupons)
   while i < coupons.length do
     k = 0
     while k < new_cart.length do
-      if coupons[i][:item] == cart[k][:item]
+      if coupons[i][:item] == cart[k][:item] && new_cart[k][:count] >= coupons[i][:num]
         coupon_per_item = coupons[i][:cost] / coupons[i][:num]
+        new_cart[k][:count] -= coupons[i][:num]
 
-        if new_cart[k][:count] >= coupons[i][:num]
-          new_cart[k][:count] -= coupons[i][:num]
-        end
+          discount_item = {
+          :item => "#{coupons[i][:item]} W/COUPON",
+          :price => coupon_per_item,
+          :clearance => cart[k][:clearance],
+          :count => coupons[i][:num],
+        }
 
+          new_cart << discount_item
 
-        discount_item = {
-        :item => "#{coupons[i][:item]} W/COUPON",
-        :price => coupon_per_item,
-        :clearance => cart[k][:clearance],
-        :count => coupons[i][:num],
-      }
-
-        new_cart << discount_item
-        k += 1
+          k += 1
 
       else
-        k += 1
+          k += 1
 
       end
     end
