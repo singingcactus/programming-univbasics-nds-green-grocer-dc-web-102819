@@ -41,7 +41,7 @@ def consolidate_cart(cart)
 
      compare_item[:count] = compare_item_count
      result << compare_item
-
+     p result
      i += 1
    end
   end
