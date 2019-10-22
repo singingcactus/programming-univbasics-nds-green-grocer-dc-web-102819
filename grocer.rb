@@ -23,7 +23,7 @@ def consolidate_cart(cart)
     compare_item = cart[i]
 
   #kill if already in result array
-    if find_item_by_name_in_collection(compare_item, result)
+    if find_item_by_name_in_collection(compare_item[:item], result)
       p "We found a duplicate"
       p compare_item
       p result
